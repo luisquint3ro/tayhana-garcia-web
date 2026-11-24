@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Propuesta C · Tayhana García | Conferencista, periodista y comunicadora</title>
+<meta name="description" content="Tayhana García, periodista bilingüe con 13 premios Emmy. Conferencias sobre comunicación con propósito y liderazgo femenino, en español e inglés.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Homemade+Apple&display=swap">
+<style>
+/* Propuesta C · lenguaje de "marcador": resaltado dorado que se pinta, trazos a mano que se dibujan,
+   una palabra manuscrita por título, bloques de color fuerte. Marca: dorado champán + espresso. */
+:root{
+  --noche:#14110E; --espresso:#2B2620; --oro:#C9A46A; --oro-f:#B98C45; --miel:#A8742E;
+  --champan:#E9D9BF; --crema:#FBF8F3; --tinta:#1E1B17; --texto:#5C5448; --linea:#E6DCCD;
+  --display:"Instrument Serif",Georgia,serif; --sans:"Montserrat",Arial,sans-serif; --mano:"Homemade Apple",cursive;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gut:max(64px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:light}
+body{margin:0;background:#fff;color:var(--tinta);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.01em;text-wrap:balance}
+:focus-visible{outline:2px solid var(--oro);outline-offset:4px}
+.w{max-width:1280px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+
+/* Efectos de marca */
+.hl{background:linear-gradient(var(--oro),var(--oro)) no-repeat 0 60%/0% 100%;padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background-size 1.1s var(--ease) .2s}
+.in .hl,.hl.in{background-size:100% 100%}
+.mano{font-family:var(--mano);font-size:.62em;font-weight:400;letter-spacing:0;display:inline-block;clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease) .5s;line-height:1.6;vertical-align:baseline}
+.in .mano{clip-path:inset(0 -10% 0 0)}
+.trazo{position:relative;white-space:nowrap}
+.trazo svg{position:absolute;left:-4%;width:108%;height:.5em;bottom:-.28em;overflow:visible;pointer-events:none}
+.trazo path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.2s var(--ease) .6s}
+.in .trazo path{stroke-dashoffset:0}
+.circ{position:relative;display:inline-block}
+.circ svg{position:absolute;inset:-22% -12%;width:124%;height:144%;overflow:visible;pointer-events:none}
+.circ path{fill:none;stroke:var(--oro);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset 1.6s var(--ease) .4s}
+.in .circ path{stroke-dashoffset:0}
+.up{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.in .up,.up.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 14px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:18px 30px;border:0;cursor:pointer;transition:transform .5s var(--ease),background .3s,color .3s}
+.btn:hover{transform:translateY(-3px)}
+.btn--oro{background:var(--oro);color:var(--noche)}
+.btn--oro:hover{background:#fff}
+.btn--noche{background:var(--noche);color:#fff}
+.btn--linea{border:1.5px solid currentColor;background:transparent}
+
+/* Menú */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,box-shadow .4s}
+.nav .w{display:flex;align-items:center;justify-content:space-between;height:90px;transition:height .4s var(--ease)}
+.nav__logo img{height:52px;transition:height .4s}
+.nav__links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.nav__links a:not(.btn){position:relative;padding:6px 0}
+.nav__links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--oro);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav__links a:not(.btn):hover::after{transform:scaleX(1)}
+.nav .btn{padding:13px 22px;font-size:12px}
+.nav__toggle{display:none;background:none;border:0;color:#fff;font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:10px 0}
+.nav.solid{background:rgba(20,17,14,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav.solid .w{height:70px}.nav.solid .nav__logo img{height:40px}
+
+/* Portada */
+.hero{position:relative;min-height:100svh;background:radial-gradient(ellipse 45% 70% at 72% 30%,rgba(201,164,106,.28),transparent 70%),radial-gradient(ellipse 80% 60% at 70% 110%,rgba(185,140,69,.22),transparent 70%),var(--noche);color:#fff;overflow:hidden;display:flex;flex-direction:column}
+.hero__grid{flex:1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:40px;align-items:end;padding-top:120px}
+.hero__t{align-self:center;display:flex;flex-direction:column;gap:34px;padding-bottom:60px;position:relative;z-index:2;max-width:720px}
+.hero h1{font-size:clamp(46px,5.4vw,84px);line-height:1.04}
+.hero h1 .hl{color:var(--noche)}
+.hero__cred{font-size:18px;line-height:1.65;font-weight:500;max-width:34em}
+.hero__cred .trazo{color:#fff}
+.hero__cred .trazo svg{color:var(--oro)}
+.hero__acc{display:flex;flex-wrap:wrap;align-items:center;gap:26px}
+.hero__press{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font:400 22px var(--display);color:#CFC4B4}
+.hero__press svg{height:22px;width:auto;fill:#CFC4B4}
+.hero__foto{position:relative;align-self:end;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.hero__foto img{width:auto;height:min(74vh,700px);max-width:none;object-fit:contain;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));animation:sube-foto 1.6s .2s var(--ease) both}
+@keyframes sube-foto{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+.hero__aro{position:absolute;left:50%;bottom:12%;width:min(30vw,440px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;border:1px solid rgba(201,164,106,.35);animation:gira 40s linear infinite}
+.hero__aro::before{content:"";position:absolute;inset:8%;border-radius:50%;border:1px dashed rgba(201,164,106,.25)}
+@keyframes gira{to{transform:translateX(-50%) rotate(360deg)}}
+
+/* Cinta de testimonios */
+.cinta{position:relative;z-index:3;border-top:1px solid rgba(255,255,255,.12);padding:22px 0;overflow:hidden;white-space:nowrap}
+.cinta__track{display:inline-flex;gap:60px;animation:marq 60s linear infinite;font:italic 400 24px var(--display);color:#E8DECF}
+.cinta__track span b{font-style:normal;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--oro);margin-left:16px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* Muro de medios */
+.muro{background:var(--miel);color:#fff}
+.muro .w{padding-block:54px;display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center}
+.muro p{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;max-width:12em;line-height:1.5}
+.muro__logos{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px 40px;font:400 clamp(22px,2.2vw,30px) var(--display)}
+.muro__logos svg{height:28px;width:auto;fill:#fff}.muro__logos .logo{display:inline-flex;align-items:center;gap:10px}.muro__logos [title=FOX] svg,.muro__logos [title=Roku] svg{height:46px}.hero__press [title=FOX] svg{height:36px}
+.muro__logos em{font:600 15px var(--sans);font-style:normal;letter-spacing:.02em}
+.muro .w{grid-template-columns:200px 1fr}.muro__logos{justify-content:flex-start;gap:26px 46px}
+.muro__logos span{opacity:.92;transition:opacity .3s,transform .4s var(--ease)}
+.muro__logos span:hover{opacity:1;transform:translateY(-3px)}
+
+/* Cita grande */
+.cita{padding-block:150px;text-align:center}
+.cita blockquote{margin:0 auto;max-width:22em;font:400 clamp(32px,4vw,58px)/1.18 var(--display)}
+.cita blockquote .hl{color:var(--noche)}
+.cita p{margin-top:34px;font-size:15px;font-weight:600;color:var(--miel)}
+.ej{display:inline-block;font:600 10px var(--sans);letter-spacing:.1em;text-transform:uppercase;background:#F3E6CF;color:#7A5A2E;padding:4px 8px;margin-left:10px;vertical-align:middle}
+
+/* Video con título encima */
+.video{background:var(--noche);padding-block:90px}
+.video__box{position:relative;display:block;aspect-ratio:16/8;overflow:hidden;background:url(images/redaccion.jpg) center 25%/cover}
+.video__box::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.15),rgba(20,17,14,.85))}
+.video__box:hover .video__play{transform:translate(-50%,-50%) scale(1.08)}
+.video__play{position:absolute;z-index:2;left:50%;top:42%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;transition:transform .5s var(--ease)}
+.video__t{position:absolute;z-index:2;left:0;right:0;bottom:7%;text-align:center;color:#fff;font:400 clamp(40px,7vw,104px)/1 var(--display);background:linear-gradient(180deg,#fff 30%,#CBBBA2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.video__t i{font-style:italic}
+
+/* Conferencias: bloque dorado con tarjetas */
+.temas{background:var(--oro-f);position:relative;overflow:hidden}
+.temas::before,.temas::after{content:"";position:absolute;background:rgba(255,255,255,.07);transform:skewX(-18deg)}
+.temas::before{left:8%;top:0;bottom:0;width:22%}
+.temas::after{right:12%;top:0;bottom:0;width:14%}
+.temas .w{position:relative;padding-block:120px}
+.temas h2{font-size:clamp(44px,5.5vw,80px);text-align:center;color:var(--noche);margin-bottom:60px}
+.temas h2 .mano{color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.card{background:#fff;padding:52px 44px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 60px rgba(60,40,10,.18);transition:transform .6s var(--ease)}
+.card:hover{transform:translateY(-8px)}
+.card h3{font-size:clamp(32px,2.8vw,42px);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.card h3 .mano{text-transform:none;color:var(--miel);font-size:.7em;display:block;margin-top:6px}
+.card p{font-size:15px;line-height:1.75;color:var(--texto)}
+.card p .hl{color:var(--noche);font-weight:600}
+.card p u{text-decoration:none;background:linear-gradient(var(--tinta),var(--tinta)) no-repeat 0 100%/0% 1.5px;transition:background-size 1s var(--ease) .8s}
+.in .card p u{background-size:100% 1.5px}
+.card .btn{margin-top:auto;align-self:flex-start;color:var(--tinta)}
+.temas__bi{text-align:center;margin-top:54px;font-size:clamp(18px,1.8vw,24px);font-weight:700;color:var(--noche)}
+
+/* Carrusel de testimonios */
+.testi{padding-block:130px}
+.testi__box{position:relative;max-width:980px;margin:0 auto;text-align:center;min-height:250px}
+.testi__q{position:absolute;inset:0;opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease);pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:22px}
+.testi__q.on{opacity:1;transform:none;pointer-events:auto;position:relative}
+.testi__q blockquote{margin:0;font-size:clamp(19px,2vw,26px);line-height:1.6;color:var(--miel)}
+.testi__q p{font-weight:700;font-size:15px}
+.testi__nav{display:flex;justify-content:center;gap:14px;margin-top:30px}
+.testi__nav button{width:56px;height:56px;border-radius:50%;border:0;background:var(--oro);color:var(--noche);font-size:22px;cursor:pointer;transition:transform .4s var(--ease),background .3s}
+.testi__nav button:hover{transform:scale(1.08);background:var(--miel);color:#fff}
+
+/* Conoce a Tayhana: bloque cobre */
+.conoce{background:var(--miel);color:#fff}
+.conoce .w{display:grid;grid-template-columns:5fr 6fr;gap:90px;align-items:center;padding-block:130px}
+.conoce__foto{position:relative}
+.conoce__foto img{width:100%;height:640px;object-fit:cover;object-position:45% 8%}
+.conoce__foto::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1.5px solid rgba(255,255,255,.5);z-index:-1}
+.conoce h2{font-size:clamp(40px,4.4vw,64px);line-height:1.05;margin-bottom:14px}
+.conoce h3{font:700 clamp(18px,1.6vw,22px)/1.45 var(--sans);margin-bottom:26px}
+.conoce h3 .circ{color:#fff}
+.conoce .lead{font-size:16px;line-height:1.8;margin-bottom:24px;max-width:34em}
+.conoce ul{list-style:none;margin:0 0 36px;padding:0;display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.6}
+.conoce li{display:flex;gap:14px}
+.conoce li::before{content:"";flex:0 0 8px;height:8px;margin-top:.55em;background:#fff;border-radius:50%}
+.conoce .btn{background:#fff;color:var(--miel)}
+
+/* Autoridad + cifras */
+.autoridad{padding-block:140px}
+.autoridad__h{font-size:clamp(36px,4vw,58px);line-height:1.1;text-align:center;max-width:18em;margin:0 auto 70px}
+.autoridad__h .hl{color:var(--noche)}
+.cifras{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--tinta)}
+.cifras>div{padding:30px 24px 0;border-left:1px solid var(--linea)}
+.cifras>div:first-child{border-left:0;padding-left:0}
+.cifras b{display:block;font:400 clamp(54px,6vw,92px)/1 var(--display);color:var(--miel);font-variant-numeric:tabular-nums}
+.cifras span{display:block;margin-top:10px;font-size:14px;line-height:1.5;color:var(--texto)}
+
+/* Cierre */
+.cierre{background:var(--noche);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cierre::before{content:"";position:absolute;left:50%;top:-30%;width:900px;height:900px;transform:translateX(-50%);background:radial-gradient(circle,rgba(201,164,106,.25),transparent 60%)}
+.cierre .w{position:relative;padding-block:150px;display:flex;flex-direction:column;align-items:center;gap:34px}
+.cierre h2{font-size:clamp(42px,6vw,92px);line-height:1.02;max-width:12em}
+.cierre h2 .hl{color:var(--noche)}
+.cierre p{font-size:17px;line-height:1.7;color:#CFC4B4;max-width:34em}
+
+/* Newsletter */
+.news .w{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding-block:120px}
+.news h2{font-size:clamp(40px,4.4vw,64px);line-height:1}
+.news .nombre{font:italic 400 28px var(--display);color:var(--miel);margin:10px 0 16px}
+.news .txt{font-size:16px;line-height:1.8;color:var(--texto);max-width:30em}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form input{border:1.5px solid var(--tinta);padding:18px 18px;font:400 15px var(--sans);min-width:0;background:#fff;border-radius:0}
+.form input:focus{outline:none;border-color:var(--miel);box-shadow:0 0 0 3px rgba(201,164,106,.3)}
+.form .btn{grid-column:1/-1}
+.msg{min-height:1.5em;margin-top:14px;font-size:14px;color:var(--miel);font-weight:500}
+
+/* Pie */
+.pie{background:var(--espresso);color:#B7AE9F}
+.pie .w{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-block:80px 36px}
+.pie img{width:230px;margin-bottom:18px}
+.pie h4{margin:0 0 16px;font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.pie ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;font-size:14px}
+.pie a:hover{color:var(--oro)}
+.pie .base{grid-column:1/-1;border-top:1px solid #3E372E;padding-top:26px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+
+/* ===== Celular ===== */
+@media (max-width:980px){
+  :root{--gut:max(20px,env(safe-area-inset-left,0px))}
+  .nav .w{height:70px}.nav__logo img{height:40px}
+  .nav__links{display:none}
+  .nav__toggle{display:block}
+  .nav.open{background:var(--noche)}
+  .nav.open .nav__links{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--noche);padding:4px var(--gut) 26px;border-top:1px solid rgba(255,255,255,.1)}
+  .nav.open .nav__links a:not(.btn){padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav.open .nav__links .btn{margin-top:18px}
+  .hero{min-height:0}
+  .hero__grid{grid-template-columns:1fr;padding-top:96px}
+  .hero__t{padding-bottom:10px;gap:22px}
+  .hero h1{font-size:clamp(40px,11.5vw,58px)}
+  .hero__cred{font-size:15px}
+  .hero__acc .btn{flex:1 1 100%}
+  .hero__press{font-size:18px;gap:10px 22px}
+  .hero__foto{height:auto;margin-top:10px}
+  .hero__foto img{height:auto;width:min(100%,430px);max-width:100%}
+  .hero__aro{width:84vw;bottom:6%}
+  .cinta__track{font-size:19px;gap:40px}
+  .muro .w{grid-template-columns:1fr;gap:24px;padding-block:40px}
+  .muro p{max-width:none}
+  .muro__logos{justify-content:flex-start;gap:16px 26px;font-size:21px}
+  .muro__logos svg{height:20px}
+  .cita{padding-block:90px}
+  .video{padding-block:0}
+  .video .w{padding:0}
+  .video__box{aspect-ratio:4/5;background-position:50% 20%}
+  .video__play{width:76px;height:76px;top:40%}
+  .video__t{font-size:clamp(40px,12vw,60px);padding:0 20px}
+  .temas .w{padding-block:80px}
+  .temas::after{display:none}
+  .cards{grid-template-columns:1fr;gap:22px}
+  .card{padding:34px 26px}
+  .testi{padding-block:80px}
+  .testi__box{min-height:330px}
+  .conoce .w{grid-template-columns:1fr;gap:50px;padding-block:80px}
+  .conoce__foto{margin-right:18px}
+  .conoce__foto img{height:440px}
+  .autoridad{padding-block:90px}
+  .autoridad__h{margin-bottom:44px}
+  .cifras{grid-template-columns:1fr 1fr;row-gap:34px}
+  .cifras>div:nth-child(3){border-left:0;padding-left:0}
+  .cierre .w{padding-block:90px}
+  .cierre .btn{width:100%}
+  .news .w{grid-template-columns:1fr;gap:34px;padding-block:80px}
+  .form{grid-template-columns:1fr}
+  .pie .w{grid-template-columns:1fr 1fr;padding-block:60px 30px}
+  .pie .w>div:first-child{grid-column:1/-1}
+}
+@media (max-width:360px){
+  .hero h1{font-size:38px}
+  .card h3{font-size:30px}
+  .cifras b{font-size:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hl{background-size:100% 100%}.mano{clip-path:none}.trazo path,.circ path{stroke-dashoffset:0}.up{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="w">
+    <a href="#inicio" class="nav__logo" aria-label="Tayhana García, inicio"><img src="images/logo-firma-claro.png" alt="Tayhana García"></a>
+    <nav class="nav__links" id="navLinks" aria-label="Principal">
+      <a href="#conoce">Sobre mí</a>
+      <a href="#temas">Conferencias</a>
+      <a href="#video">Completita</a>
+      <a href="#newsletter">Comunidad</a>
+      <a href="#contratar" class="btn btn--oro">Contrata a Tayhana</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menú</button>
+  </div>
+</header>
+
+<main>
+<section class="hero in" id="inicio">
+  <div class="w hero__grid">
+    <div class="hero__t">
+      <h1 class="up">Cuando todos hablan, <span class="hl">gana quien sabe conectar.</span></h1>
+      <p class="hero__cred up d2">Conferencista en <span class="trazo">comunicación con propósito<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 50 2, 120 12, 198 5"/></svg></span> y liderazgo femenino. Periodista con 13 premios Emmy. Creadora de Completita. En español y en inglés.</p>
+      <div class="hero__acc up d3">
+        <a href="#contratar" class="btn btn--oro">Contrata a Tayhana</a>
+        <a href="#video" class="btn btn--linea">Ver video</a>
+      </div>
+      <div class="hero__press up d4" aria-label="Ha trabajado en" id="heroPress"></div>
+    </div>
+    <div class="hero__foto">
+      <div class="hero__aro" aria-hidden="true"></div>
+      <img src="images/cutout.png" alt="Tayhana García" fetchpriority="high">
+    </div>
+  </div>
+  <div class="cinta" aria-label="Testimonios">
+    <div class="cinta__track" id="cinta"></div>
+  </div>
+</section>
+
+<section class="muro" aria-label="Medios y organizaciones">
+  <div class="w">
+    <p>Medios donde ha trabajado y plataformas donde está Completita</p>
+    <div class="muro__logos" id="muro"></div>
+  </div>
+</section>
+
+<section class="w cita rv">
+  <blockquote class="up">“Tayhana no dio una charla: <span class="hl">transformó la energía de todo el evento.</span> Ochocientas mujeres salieron con una tarea y con ganas de cumplirla.”</blockquote>
+  <p class="up d2">Directora, Encuentro Mujeres de Propósito <span class="ej">Ejemplo</span></p>
+</section>
+
+<section class="video" id="video">
+  <div class="w">
+    <a class="video__box rv" href="https://www.youtube.com/@completita/videos" target="_blank" rel="noopener" aria-label="Ver videos de Tayhana en YouTube">
+      <span class="video__play"><svg width="28" height="30" viewBox="0 0 28 30" aria-hidden="true"><path d="M6 3 L26 15 L6 27Z" fill="#fff"/></svg></span>
+      <span class="video__t up">Tu voz <i>cambia la historia</i></span>
+    </a>
+  </div>
+</section>
+
+<section class="temas" id="temas">
+  <div class="w rv">
+    <h2 class="up">Conferencias de <span class="mano">Tayhana</span></h2>
+    <div class="cards">
+      <article class="card up d1">
+        <h3>Completa: <span class="mano">tu valor no se negocia</span></h3>
+        <p>Para mujeres que sostienen familia, trabajo y comunidad. <span class="hl">Tu valor no depende de lo que logras.</span></p>
+        <p>Basada en las cinco áreas de Completita, deja a cada asistente con <u>un plan personal de 30 días.</u></p>
+        <a href="#contratar" class="btn btn--linea">Conocer más</a>
+      </article>
+      <article class="card up d2">
+        <h3>Tu voz, tu poder: <span class="mano">comunica en vivo</span></h3>
+        <p>Veinte años de transmisiones en vivo convertidos en un método. <span class="hl">Mensajes claros en 30 segundos.</span></p>
+        <p>Para equipos y líderes que necesitan <u>explicar, convencer y generar confianza.</u></p>
+        <a href="#contratar" class="btn btn--linea">Conocer más</a>
+      </article>
+      <article class="card up d3">
+        <h3>De la isla a los Emmy: <span class="mano">resiliencia</span></h3>
+        <p>Llegó a Miami a los 14 años. <span class="hl">Construyó una carrera premiada en dos idiomas.</span></p>
+        <p>Ideal para eventos hispanos, de liderazgo y de diversidad que buscan <u>historias que mueven a la acción.</u></p>
+        <a href="#contratar" class="btn btn--linea">Conocer más</a>
+      </article>
+    </div>
+    <p class="temas__bi up">Todas las conferencias y talleres, en español y en inglés.</p>
+  </div>
+</section>
+
+<section class="w testi" aria-label="Testimonios">
+  <div class="testi__box" id="testi">
+    <div class="testi__q on"><blockquote>“Nuestro equipo de ventas cambió su forma de presentar después de su taller. Práctica, clara y muy humana.”</blockquote><p>Director de Recursos Humanos <span class="ej">Ejemplo</span></p></div>
+    <div class="testi__q"><blockquote>“Como maestra de ceremonias sostuvo un evento de seis horas con elegancia y control total en dos idiomas.”</blockquote><p>Productora de eventos, gala anual <span class="ej">Ejemplo</span></p></div>
+    <div class="testi__q"><blockquote>“Fue la conferencia mejor evaluada de nuestro congreso. Ya la invitamos para el próximo año.”</blockquote><p>Comité organizador, congreso de liderazgo hispano <span class="ej">Ejemplo</span></p></div>
+    <div class="testi__q"><blockquote>“Supo hablarle a una audiencia de fe y a una corporativa con la misma autenticidad.”</blockquote><p>Coordinadora de eventos comunitarios <span class="ej">Ejemplo</span></p></div>
+  </div>
+  <div class="testi__nav"><button id="tPrev" aria-label="Testimonio anterior">←</button><button id="tNext" aria-label="Testimonio siguiente">→</button></div>
+</section>
+
+<section class="conoce" id="conoce">
+  <div class="w rv">
+    <div class="conoce__foto up"><img src="images/azotea.jpg" alt="Tayhana García en Miami"></div>
+    <div>
+      <h2 class="up">Conoce a <span class="mano">Tayhana</span></h2>
+      <h3 class="up d1">Experta en <span class="circ">comunicación<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M30 12 C 90 -4, 190 8, 194 38 C 198 70, 60 82, 14 56 C -10 40, 20 16, 70 10"/></svg></span>, periodista con 13 Emmy y creadora de Completita.</h3>
+      <p class="lead up d2">Tayhana ayuda a mujeres, equipos y líderes a encontrar su voz y usarla con propósito, para comunicar con claridad cuando más importa.</p>
+      <ul class="up d3">
+        <li>20 años contando historias en televisión, en inglés y en español.</li>
+        <li>Llegó a Miami desde República Dominicana a los 14 años.</li>
+        <li>Reportera en Los Ángeles, Fresno, San Francisco y Miami.</li>
+        <li>Conductora de Hope 4 The City en Bless 88.3 FM.</li>
+      </ul>
+      <a href="#" class="btn up d4">Leer la historia de Tayhana</a>
+    </div>
+  </div>
+</section>
+
+<section class="w autoridad rv">
+  <h2 class="autoridad__h up">Una voz de confianza para <span class="hl">la comunidad hispana.</span></h2>
+  <div class="cifras up d2">
+    <div><b data-count="13">13</b><span>premios Emmy</span></div>
+    <div><b data-count="20">20</b><span>años en televisión</span></div>
+    <div><b data-count="150" data-suf="+">150+</b><span>conferencias y eventos <span class="ej">Ejemplo</span></span></div>
+    <div><b data-count="2">2</b><span>idiomas en cada escenario</span></div>
+  </div>
+</section>
+
+<section class="cierre" id="contratar">
+  <div class="w rv">
+    <h2 class="up">Cuando todos hablan, <span class="hl">gana quien sabe conectar.</span></h2>
+    <p class="up d1">Conferencias, conducción de eventos, paneles y talleres. Cuéntanos de tu evento y recibe disponibilidad y propuesta.</p>
+    <a href="mailto:contacto@tayhanagarcia.com" class="btn btn--oro up d2">Contrata a Tayhana</a>
+  </div>
+</section>
+
+<section class="news" id="newsletter">
+  <div class="w rv">
+    <div>
+      <h2 class="up">Mantente conectada</h2>
+      <p class="nombre up d1">Carta Completita</p>
+      <p class="txt up d2">Una carta al mes con herramientas de comunicación, bienestar y propósito para mujeres que lideran, más los nuevos episodios del podcast.</p>
+    </div>
+    <form id="newsForm" class="up d2" novalidate>
+      <div class="form">
+        <label for="n1" style="position:absolute;left:-9999px">Nombre</label><input id="n1" placeholder="Tu nombre" autocomplete="given-name">
+        <label for="n2" style="position:absolute;left:-9999px">Correo</label><input id="n2" type="email" placeholder="Tu correo" autocomplete="email">
+        <button class="btn btn--noche" type="submit">Suscribirme</button>
+      </div>
+      <p class="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="w">
+    <div><img src="images/logo-firma-claro.png" alt="Tayhana García"><p style="font-size:14px;line-height:1.7;max-width:26em">Comunicación con propósito. Historias que inspiran. Voces que transforman.</p></div>
+    <div><h4>Sobre mí</h4><ul><li><a href="#conoce">Mi historia</a></li><li><a href="#video">Completita</a></li><li><a href="#">Prensa</a></li><li><a href="#">Media kit</a></li></ul></div>
+    <div><h4>Conferencias</h4><ul><li><a href="#temas">Keynotes</a></li><li><a href="#">Conducción</a></li><li><a href="#">Talleres</a></li><li><a href="#">Preguntas</a></li></ul></div>
+    <div><h4>Síguela</h4><ul><li><a href="https://www.instagram.com/tayhanatv" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/tayhanatv" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.youtube.com/@completita" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+    <div class="base"><span>© 2026 Tayhana García · Periodista, conferencista y comunicadora</span><span>contacto@tayhanagarcia.com</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var P={"fox": "M3.069 9.7h3.42L6.3 6.932H0v10.136h3.069V13.8h2.789v-2.778H3.069ZM24 6.932h-3.291L19.48 9.1l-1.231-2.168h-3.292l2.871 5.076-2.871 5.06h3.308l1.215-2.142 1.213 2.142H24l-2.871-5.06Zm-12.592 0A5.067 5.067 0 1 0 16.475 12a5.067 5.067 0 0 0-5.067-5.065Zm.888 7.146a.867.867 0 0 1-.873.847.847.847 0 0 1-.837-.858V9.919a.882.882 0 0 1 .837-.9.913.913 0 0 1 .873.9Z", "youtube": "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z", "roku": "M16.34 9.853l-2.254 2.254v-2.26H12.13v5.744h1.957v-2.33l2.353 2.33h2.46l-2.988-2.99 2.477-2.476v3.411c0 1.133.679 2.177 2.393 2.177.815 0 1.56-.462 1.922-.88l.88.759H24v-5.74h-1.951v3.718c-.22.384-.528.627-1.002.627-.482 0-.703-.286-.703-1.198V9.853zm-4.591 2.869A3.004 3.004 0 1 1 8.738 9.73a2.997 2.997 0 0 1 3.011 2.99m-3.011-1.57c-.518 0-.956.704-.956 1.572 0 .867.438 1.57.956 1.57.528 0 .968-.702.968-1.57 0-.869-.438-1.572-.968-1.572zm-2.206 4.447H4.313L2.55 13.153h-.594v2.44H0V8.26h2.8c1.616 0 2.935 1.1 2.935 2.45 0 .826-.505 1.562-1.273 2.013l2.07 2.875m-2.75-4.888A1.226 1.226 0 0 0 2.56 9.478h-.604v2.453h.605a1.225 1.225 0 0 0 1.22-1.221Z", "amazonfiretv": "M20.196 15.12c.265.337-.294 1.73-.542 2.353-.077.19.085.266.257.123 1.106-.926 1.39-2.867 1.166-3.149-.226-.277-2.16-.516-3.341.314-.183.127-.151.304.05.279.665-.08 2.147-.257 2.41.08m-.858.981c-2.064 1.523-5.056 2.333-7.632 2.333-3.611 0-6.862-1.334-9.322-3.555-.194-.176-.02-.414.21-.28 2.655 1.545 5.939 2.477 9.328 2.477 2.287 0 4.803-.476 7.115-1.458.348-.147.642.231.3.483m2.034-3.155a.388.388 0 0 1-.201-.04c-.041-.026-.087-.1-.133-.225l-1.734-4.355a1.79 1.79 0 0 0-.046-.117.266.266 0 0 1-.023-.108c0-.084.049-.128.146-.128h.58c.098 0 .165.014.205.04.04.026.082.102.127.226l1.344 3.823 1.343-3.823c.046-.124.089-.2.128-.226a.402.402 0 0 1 .205-.04h.54c.1 0 .148.044.148.128a.3.3 0 0 1-.025.108c-.016.04-.032.078-.044.117l-1.727 4.355c-.045.124-.09.199-.132.225a.388.388 0 0 1-.201.04zm-3.644.068c-.929 0-1.392-.463-1.392-1.392V8.739h-.706c-.13 0-.197-.066-.197-.196v-.246a.22.22 0 0 1 .045-.147c.03-.031.086-.055.171-.067l.717-.09.127-1.215c.013-.13.082-.196.207-.196h.41c.13 0 .196.066.196.196v1.196h1.276c.13 0 .195.065.195.197v.372c0 .13-.064.196-.195.196h-1.276v2.834c0 .243.055.411.162.51.108.098.293.147.555.147.124 0 .277-.016.46-.049.099-.02.164-.03.197-.03.052 0 .088.014.108.044.02.03.029.077.029.142v.266a.366.366 0 0 1-.04.19c-.026.043-.078.078-.157.103a3.018 3.018 0 0 1-.892.118m-4.665-2.976c.006-.052.011-.137.011-.255 0-.399-.094-.698-.28-.901-.186-.204-.46-.306-.818-.306-.412 0-.732.123-.962.369-.228.245-.36.61-.392 1.093zm-.942 3.07c-.803 0-1.411-.222-1.824-.667-.412-.444-.616-1.102-.616-1.972 0-.83.204-1.475.616-1.937.413-.46.988-.691 1.728-.691.62 0 1.098.176 1.432.524.332.351.5.846.5 1.487 0 .21-.017.422-.05.638-.014.077-.034.13-.064.156-.029.027-.077.04-.142.04h-3.08c.013.563.154.977.418 1.245.265.268.674.403 1.23.403.196 0 .385-.014.564-.04a5.04 5.04 0 0 0 .682-.166l.117-.035a.284.284 0 0 1 .09-.016c.085 0 .125.06.125.177v.276c0 .085-.012.144-.037.18a.441.441 0 0 1-.167.114 3.38 3.38 0 0 1-.701.205 4.236 4.236 0 0 1-.82.079m-5.424-.147c-.13 0-.195-.066-.195-.197v-4.58c0-.13.064-.195.195-.195h.432c.064 0 .116.012.153.039.036.025.06.076.072.146l.07.55c.176-.19.343-.34.499-.452a1.725 1.725 0 0 1 1.02-.323c.079 0 .158.003.235.01.112.014.168.072.168.176v.53c0 .117-.058.177-.178.177-.058 0-.114-.004-.17-.01a1.638 1.638 0 0 0-.18-.01c-.524 0-.973.157-1.346.47v3.472c0 .131-.066.197-.195.197zm-2.249 0c-.13 0-.196-.066-.196-.197v-4.58c0-.13.066-.195.196-.195h.579c.13 0 .195.064.195.195v4.58c0 .131-.065.197-.195.197zm.295-5.856c-.19 0-.339-.054-.447-.16a.581.581 0 0 1-.161-.428c0-.176.054-.318.16-.426.11-.109.257-.163.448-.163.189 0 .337.054.446.163.107.108.16.25.16.426a.581.581 0 0 1-.16.427.608.608 0 0 1-.446.161m-3.625 5.856c-.132 0-.197-.066-.197-.197v-4.01H.195c-.13 0-.195-.066-.195-.197v-.245c0-.065.014-.114.043-.147.03-.033.088-.055.173-.07l.705-.087v-.804c0-1.091.523-1.638 1.57-1.638.248 0 .51.036.784.109.072.019.122.047.152.088.029.038.044.107.044.205v.255c0 .124-.048.186-.148.186-.058 0-.14-.01-.248-.029-.11-.02-.23-.03-.369-.03-.3 0-.51.057-.633.172-.121.115-.181.303-.181.564v.903h1.324c.131 0 .197.064.197.195v.373c0 .13-.066.197-.197.197H1.892v4.01c0 .131-.065.197-.196.197Z", "instagram": "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077", "facebook": "M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"};
+  function L(k,label,w){return '<span class="logo" title="'+label+'"><svg viewBox="0 0 24 24" role="img" aria-label="'+label+'"><path d="'+P[k]+'"/></svg>'+(w?'<em>'+label+'</em>':'')+'</span>'}
+  var hero=[L('fox','FOX'),'<span>Estrella TV</span>','<span>Mega TV</span>','<span>Bless 88.3 FM</span>'];
+  var muro=[L('fox','FOX'),'<span>Estrella TV</span>','<span>Mega TV</span>','<span>Bless 88.3 FM</span>','<span>CVC La Voz</span>','<span>La Nueva 88.3 FM</span>',
+            L('youtube','YouTube',1),L('roku','Roku'),L('amazonfiretv','Fire TV',1),'<span>Latinísima</span>',L('instagram','Instagram',1),L('facebook','Facebook',1)];
+  document.getElementById('heroPress').innerHTML=hero.join('');
+  document.getElementById('muro').innerHTML=muro.join('');
+  var frases=[['Hubo un antes y un después en nuestro evento gracias a ella.','Organizadora de congreso'],['La conferencia mejor evaluada de todo el año.','Comité de liderazgo hispano'],['Clara, cálida y con una presencia que llena el salón.','Productora de eventos'],['Salimos con un plan, no solo con inspiración.','Asistente, Semana de la Mujer']];
+  var c=frases.map(function(f){return '<span>“'+f[0]+'”<b>'+f[1]+' · ejemplo</b></span>'}).join('');
+  document.getElementById('cinta').innerHTML=c+c;
+
+  // Revelado: añade .in a cada bloque al entrar en pantalla
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  // Menú
+  var nav=document.getElementById('nav'),tg=document.getElementById('navToggle');
+  function sc(){nav.classList.toggle('solid',scrollY>40)}sc();addEventListener('scroll',sc,{passive:true});
+  tg.addEventListener('click',function(){var o=nav.classList.toggle('open');tg.setAttribute('aria-expanded',o);tg.textContent=o?'Cerrar':'Menú'});
+  document.querySelectorAll('#navLinks a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');tg.textContent='Menú';tg.setAttribute('aria-expanded',false)})});
+
+  // Testimonios
+  var qs=document.querySelectorAll('.testi__q'),k=0;
+  function show(n){qs[k].classList.remove('on');k=(n+qs.length)%qs.length;qs[k].classList.add('on')}
+  document.getElementById('tPrev').onclick=function(){show(k-1)};
+  document.getElementById('tNext').onclick=function(){show(k+1)};
+  if(!reduce)setInterval(function(){show(k+1)},7000);
+
+  // Cifras
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,end=+el.dataset.count,suf=el.dataset.suf||'';cio.unobserve(el);
+    if(reduce){el.textContent=end+suf;return}var t0=performance.now();
+    (function st(t){var p=Math.min((t-t0)/1500,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(n){n.textContent='0'+(n.dataset.suf||'');cio.observe(n)});
+
+  // Newsletter
+  var f=document.getElementById('newsForm');
+  f.addEventListener('submit',function(e){e.preventDefault();var m=f.querySelector('.msg'),em=document.getElementById('n2');
+    if(!em.value||!em.checkValidity()){m.textContent='Escribe un correo válido para suscribirte.';return}
+    m.textContent='Listo. Recibirás la próxima Carta Completita en tu correo.';f.reset()});
+})();
+</script>
+</body>
+</html>
